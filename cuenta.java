@@ -1,4 +1,7 @@
 import java.util.Random;
+import java.io.FileWriter; 
+import java.io.IOException;  
+
 public class cuenta {
     // Information
     private int id;
@@ -17,6 +20,11 @@ public class cuenta {
         this.pin = pin;
         this.setID();
         this.setCLABE();
+
+        // store account into a file
+        this.storeAccount();
+
+        
     }
     // validators
     public boolean validatePIN(int pin){
@@ -40,6 +48,18 @@ public class cuenta {
     private void setCLABE(){
         Random rnd = new Random();
         this.clabe = 100000 + rnd.nextInt(900000);
+    }
+    private void storeAccount(){
+        String filename = this.ownerName + "_" + this.clabe + ".txt";
+        try {
+            FileWriter storage = new FileWriter(filename);
+            storage.write(this.id + "| " + this.ownerName + "| " + this.clabe + "| ");
+            storage.close();
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error.");
+            e.printStackTrace();
+        }
+
     }
     public void setStock(double amount){
         this.moneyStock = moneyStock + amount;
