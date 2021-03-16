@@ -9,7 +9,7 @@ public class banco {
 
 
         // Montserrat
-        cuenta montserrat = new cuenta("Alberto", "Debito", 111111);
+        cuenta montserrat = new cuenta("Montserrat", "Debito", 111111);
 
         montserrat.setMStock(40000);
         montserrat.setCurrency("MXN");
